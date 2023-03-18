@@ -1,329 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-<style>
-    
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form validation</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
 
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
- 
-}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+      integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        font-weight: bolder;
+      }
+      body {
+        margin-top: 100px;
+      }
+      th,
+      td {
+        border: 2px solid white;
+      }
+    </style>
+  </head>
 
-.login_container{
-    position: relative;
-    max-width: 430px;
-    width: 100%;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px rgb(87, 75, 75);
-    overflow: hidden;
-    margin-top: 3%;
-   
-    border: 2px solid black;
-}
-
-.login_container .forms{
-    display: flex;
-    align-items: center;
-    height: 400px;
-    width: 200%;
-    transition: height 0.2s ease;
-}
-
-
-.login_container .in_form{
-    width: 50%;
-    padding: 30px;
-    background-color: #fff;
-    transition: margin-left 0.18s ease;
-}
-
-
-.login_container .in_form .log_title{
-    position: relative;
-    font-size: 27px;
-    font-weight: 600;
-}
-
-
-.in_form .log_input-field{
-    position: relative;
-    height: 30px;
-    width: 100%;
-    margin-top: 30px;
-}
-
-.log_input-field input{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    padding: 0 35px;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    border-bottom: 2px solid #ccc;
-    border-top: 2px solid transparent;
-    transition: all 0.2s ease;
-}
-
-.log_input-field input:is(:focus, :valid){
-    border-bottom-color: #4070f4;
-}
-
-.log_input-field i{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #999;
-    font-size: 23px;
-    transition: all 0.2s ease;
-}
-
-.log_input-field input:is(:focus, :valid) ~ i{
-    color: #4070f4;
-}
-
-.log_input-field i.icon{
-    left: 0;
-}
-.log_input-field i.showHidePw{
-    right: 0;
-    cursor: pointer;
-    padding: 10px;
-}
-.log_input-field i.cshowHidePw{
-    right: 0;
-    cursor: pointer;
-    padding: 10px;
-}
-
-.in_form .checkbox-text{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.checkbox-text .checkbox-content{
-    display: flex;
-    align-items: center;
-}
-
-.checkbox-content input{
-    margin-right: 10px;
-    accent-color: #4070f4;
-}
-
-.in_form .text{
-    color: #333;
-    font-size: 14px;
-}
-
-.in_form a.text{
-    color: #4070f4;
-    text-decoration: none;
-}
-.in_form a:hover{
-    text-decoration: underline;
-}
-
-.in_form .log_button{
-    margin-top: 20px;
-}
-
-.in_form .log_button button{
-    border: none;
-    color: #fff;
-    font-size: 17px;
-    font-weight: 500;
-    width: 350px;
-    padding: 5px;
-    letter-spacing: 1px;
-    border-radius: 6px;
-    background-color: #000000;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.log_button button:hover{
-    background-color: #383838;
-}
-.show_log_data{
-    background-color: #0838bb;
-    width: 40%;
-    height: 10%;
-}
-.show-data-for-log{
-    background-color:aliceblue;
-    margin-top: 3%;
-    border: 2px solid black;
-}
-#enters{
-    text-align: center;
-    font-size: 20px;
-    font-weight: 900;
-
-}
-th{
-    border-top-style: hidden!important ;
-    border-left-style: hidden!important;
-    border-right-style: hidden!important;
-  
-}
-
-
-
-
-
-</style>
-</head>
-<body>
-    <div class="login_container">
-        <div class="forms">
-            <div class="in_form login">
-                <span class="log_title">Registration From</span>
-
-                <form id="fon" onsubmit="form_validate();return false">
-                    <div class="log_input-field">
-                        <input type="text"  placeholder="Enter your name"  id="name" required>
-                        <i class="uil uil-user icon"></i>
-                    </div>
-                    <div class="log_input-field">
-                        <input type="email"  placeholder="Enter your email"  id="email" required>
-                        <i class="uil uil-envelope icon"></i>
-                    </div>
-                    <div class="log_input-field">
-                        <input type="password" class="password" placeholder="Enter your password" id="password" required>
-                        <i class="uil uil-lock icon"></i>
-                        <i class="uil uil-eye-slash showHidePw"></i>
-                    </div>
-                    <div class="log_input-field">
-                        <input type="date"  placeholder="Select your dob"  id="dob" max="2005-02-11" min="1968-02-11" required>
-                        <i class="uil-calender icon"></i>
-                    </div>
-                    <div class="checkbox-text">
-                        <div class="checkbox-content">
-                            <input type="checkbox" id="logCheck" required>
-                            <label for="logCheck" class="text">Accept Terms & Conditions</label>
-                        </div>
-                    </div>
-
-                    <div class="log_input-field log_button">
-                            <button type="submit">Submit</button>
-                    </div>
-                </form>
-                
-            </div>
-            </div>
-            </div>
-            <div class="show-data-for-log">
-<table class="table table-bordered" id="regTable">
-    <thead>
-        <th colspan="5" id="enters">Entries</th>
-        <tr>
+  <body class="bg-dark text-light">
+    <div class="container-fluid mx-auto row">
+      <form onsubmit="validate()" name="myForm">
+        <div class="form-group col-md-6 mx-auto">
+          <label for="name">Enter Name:</label>
+          <input
+            type=""
+            class="form-control"
+            id="name"
+            placeholder="Enter name"
+            required
+          />
+        </div>
+        <br /><br />
+        <div class="form-group col-md-6 mx-auto">
+          <label for="email">Email address:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            aria-decribedby="emailHelp"
+            placeholder="Enter email"
+            required
+          />
+        </div>
+        <br /><br />
+        <div class="form-group col-md-6 mx-auto">
+          <label for="Password">Password:</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter Password"
+            required
+          />
+        </div>
+        <br /><br />
+        <div class="form-group col-md-6 mx-auto">
+          <label for="dob">Enter DOB:</label>
+          <input
+            type="date"
+            class="form-control"
+            id="dob"
+            min="18 years ago"
+            max="55 years ago"
+            required
+          />
+        </div>
+        <br /><br />
+        <div class="form-check mx-auto col-md-6">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="checkbox"
+            required
+          />
+          <label class="form-check-label" for="Check"
+            >Accept Terms & Conditions</label
+          >
+          <br /><br />
+          <button
+            type="submit"
+            class="btn btn-success"
+            onclick="validate(event)"
+          >
+            Submit
+          </button>
+          <div id="errorMessage"></div>
+        </div>
+      </form>
+      <table
+        id="registrationTable"
+        style="
+          margin: 0 auto;
+          display: table;
+          border: 2px solid rgb(255, 255, 255);
+          text-align: center;
+          width: 60%;
+          margin-top: 20px;
+          margin-bottom: 50px;
+        "
+      >
+        <thead>
+          <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Password</th>
             <th>Dob</th>
             <th>Accepted terms?</th>
-        </tr>
-        
-    </thead>
-    <tbody></tbody>
-</table>
-            </div>
-    
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
     <script>
-            pwShowHide = document.querySelectorAll(".showHidePw");
-      pwFields = document.querySelectorAll(".password");
+      // Get data from local storage
+let userData = JSON.parse(localStorage.getItem("user"));
 
-      
-    pwShowHide.forEach(eyeIcon =>{
-        eyeIcon.addEventListener("click", ()=>{
-            pwFields.forEach(pwField =>{
-                if(pwField.type ==="password"){
-                    pwField.type = "text";
+// Check if the data exists and is an array
+if (userData && Array.isArray(userData)) {
+// Get the table element
+let table = document.getElementById("registrationTable");
 
-                    pwShowHide.forEach(icon =>{
-                        icon.classList.replace("uil-eye-slash", "uil-eye");
-                    })
-                }else{
-                    pwField.type = "password";
+// Loop through the userData array
+for (let i = 0; i < userData.length; i++) {
+// Create a new row
+let row = table.insertRow();
 
-                    pwShowHide.forEach(icon =>{
-                        icon.classList.replace("uil-eye", "uil-eye-slash");
-                    })
-                }
-            }) 
-        })
-    })
-    const form_validate=()=>{
-const name=document.getElementById("name").value;
-const email=document.getElementById("email").value;
-const psw=document.getElementById("password").value;
-const dob=document.getElementById("dob").value;
-const check=document.getElementById("logCheck").checked;
-    if(dob>='1968-02-11' && dob<='2005-02-11'){
-        var Entries;
-        if(localStorage.getItem('user-entries')===null)
-        Entries=[];
-        else
-        Entries=JSON.parse(localStorage.getItem('user-entries'))
-        Entries.unshift({
-            name:name,
-            email:email,
-            psw:psw,
-            dob:dob,
-            check:check
-        })
-        localStorage.setItem('user-entries',JSON.stringify(Entries));
-        showdata()
-        
-    }else{
-        const dob=document.getElementById("dob").value='';
-        //const buttons=document.getElementById("fon");
-        
-        
-       
-    }
+// Insert cells for the name, dob, email, and password
+let nameCell = row.insertCell(0);
+let emailCell = row.insertCell(1);
+let passwordCell = row.insertCell(2);
+let dobCell = row.insertCell(3);
+let t_and_cCell = row.insertCell(4);
+
+// Set the cell values
+nameCell.innerHTML = userData[i].name;
+emailCell.innerHTML = userData[i].email;
+passwordCell.innerHTML = userData[i].password;
+dobCell.innerHTML = userData[i].dob;
+t_and_cCell.innerHTML = userData[i].Accepted_terms;
+console.log("error")
+}}
+// } else {
+//   console.error("No data found in local storage or data is not in expected format");
+// }
+
+function validate(event) {
+    event.preventDefault();
+
+    // birthdate calculation
+    let dob = document.getElementById("dob").value;
+    const name = document.forms["myForm"]["name"].value;
+    const email = document.forms["myForm"]["email"].value;
+    const password = document.forms["myForm"]["password"].value;
+    const errorMessage = document.getElementById("errorMessage");
+    const table = document.querySelector("#registrationTable tbody");
+    const checkbox = document.getElementById("checkbox");
     
-}
-    const showdata=()=>{
-var Entries;
-if(localStorage.getItem('user-entries')===null)
-Entries=[];
-else
-Entries=JSON.parse(localStorage.getItem('user-entries'))
 
-var html="";
 
-Entries.forEach((element,intex)=>{
-html += "<tr>";
-html += "<td>" + element.name+"</td>";
-html += "<td>" + element.email+"</td>";
-html += "<td>" + element.psw+"</td>";
-html += "<td>" + element.dob+"</td>";
-html += "<td>" + element.check+"</td>";
-html += "</tr>";
-});
-document.querySelector("#regTable tbody").innerHTML=html;
+  //   const checkAge=()=> {
+  //   var birthdate = document.getElementById("dob").value;
+  //   var birthdateArray = birthdate.split("-");
+  //   var today = new Date();
+  //   var birthdateObject = new Date(birthdateArray[0], birthdateArray[1] - 1, birthdateArray[2]);
+  //   var ageInMilliseconds = today - birthdateObject;
+  //   var ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365);
 
-}
-document.onload=showdata();    
+  //   if (ageInYears >= 18 && ageInYears <= 55) {
+      
+  //   } else {
+  //     alert("You are not within the age range of 18 to 55 years old.");
+  //   }
+  // }
+
+
+
+    const calculateAge = (dob) => {
+      const today = new Date();
+      const birthDate = new Date(dob);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+      if (
+        monthDiff < 0 ||
+        (monthDiff === 0 && today.getDate() < birthDate.getDate())
+      ) {
+        age--;
+      }
+      return age;
+    };
+
+    const age = calculateAge(dob);
+    console.log(age);
+
+    const validateEmail = (email) => {
+      var re =
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    };
+    if (validateEmail(email)) {
+      emailis = "valid";
+    } else {
+      emailis = "wrong";
+    }
+
+    errorMessage.innerHTML = "";
+
+    let isValid = true;
+
+    if (!name) {
+      alert("Name is required.");
+      isValid = false;
+    }
+
+   
+
+
+    if (isNaN(age) || age < 18 || age > 55) {
+      alert("age must between 18 to 55");
+      isValid = false;
+    }
+
+    if (emailis === "wrong") {
+      alert("please enter valid email");
+      isValid = false;
+    }
+
+    if (!password) {
+      alert("Password is required. <br>");
+      isValid = false;
+    }
+
+    if (checkbox.checked) {
+      checkbox_status="true"
+    } else {
+      checkbox_status="false"
+    }
+
+    if (isValid) {
+      console.log("yes");
+
+      // Get the current data from local storage
+      let data = JSON.parse(localStorage.getItem("user")) || [];
+
+      // Add the new user data to the array
+      data.push({
+        name: name,
+        email: email,
+        password: password,
+        dob: dob,
+        Accepted_terms:checkbox_status,
+        // Add any other relevant data here
+      });
+
+      // Store the updated data back in local storage
+      localStorage.setItem("user", JSON.stringify(data));
+
+
+
+    
+      const row = document.createElement("tr");
+      row.innerHTML = `
+      <td>${name}</td>
+      <td>${email}</td>
+      <td>${password}</td>
+      <td>${dob}</td>
+      <td>${checkbox_status}</td>
+      `;
+      table.appendChild(row);
+
+      document.getElementById("dob").value = "";
+      document.forms["myForm"]["name"].value = "";
+      document.forms["myForm"]["email"].value = "";
+      document.forms["myForm"]["password"].value = "";
+    }
+  }
+ server.listen(3000);
     </script>
-</body>
+  </body>
 </html>
