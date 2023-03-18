@@ -1,49 +1,50 @@
-const http = require("http");
-const fs = require("fs");
-const args = require("minimist")(process.argv);
-const port = args.port;
-let homepage = "";
-let projectpage = "";
-let registrationpage = "";
+const http = require("http")
+const fs = require("fs")
+
+let homeContent = ""
+let projectContent = ""
+let registrationContent = ""
+
+const args = require("minimist")(process.argv.slice(2));
+console.log(args.port);
 
 fs.readFile("home.html", (err, home) => {
   if (err) {
-    throw err;
+    throw err
   }
-  homepage = home;
-});
+  homeContent = home
+})
 
 fs.readFile("project.html", (err, project) => {
   if (err) {
-    throw err;
+    throw err
   }
-  projectpage = project;
-});
+  projectContent = project
+})
 
 fs.readFile("registration.html", (err, registration) => {
-  if (err) {
-    throw err;
-  }
-  registrationpage = registration;
-});
-
-http
+    if (err) {
+      throw err
+    }
+    registrationContent = registration
+  })
+  http
   .createServer((request, response) => {
-    let url = request.url;
-    response.writeHeader(200, { "Content-Type": "text/html" });
+    let url = request.url
+    response.writeHeader(200, { "Content-Type": "text/html" })
     switch (url) {
       case "/project":
-        response.write(projectpage);
-        response.end();
-        break;
+        response.write(projectContent)
+        response.end()
+        break
       case "/registration":
-        response.write(registrationpage);
-        response.end();
-        break;
+        response.write(registrationContent)
+        response.end()
+        break
       default:
-        response.write(homepage);
-        response.end();
-        break;
+        response.write(homeContent)
+        response.end()
+        break
     }
   })
-  .listen(port);
+  .listen(args.port);
