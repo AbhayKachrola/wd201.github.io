@@ -15,7 +15,7 @@ const saltRounds = 10;
 app.set("views", path.join(__dirname, "views"));
 app.use(flash());
 const { Todo, User } = require("./models");
-const todo = require("./models/todo");
+// const todo = require("./models/todo");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser("shh! some secrete string"));
