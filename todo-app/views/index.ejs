@@ -11,13 +11,14 @@
     <link href="./css/style.css" rel="stylesheet" />
     
   </head>
-  <body>
-    <div class="grid grid-cols-6">
+  <body style="background-color:powderblue;">
+    <div class="grid grid-cols-6" , style="color: rgb(28, 80, 80);">
       <div class="col-start-3 col-span-2">
-        <%- include("header.ejs") %> 
-        <p class="py-2">Welcome to the To-Do Manager</p>
-        <p class="py-2">New User?<a href="/signup" class="text-green-600"> Sign-up now </a> </p>
-        <p class="py-2">Existing User? <a href="/login" class="text-green-600">Sign-in</a></p>
+        <%- include("header.ejs") %>
+        <br> 
+        <p class="py-2 font-semibold text-gray-600 bg-green-600 text-white px-4 py-1 rounded font-medium mr-2 mb-2", style="font-size:2vw">Welcome to the To-Do Manager</p><br>
+        <p class="py-2 font-semibold text-gray-600 font-medium", style="font-size:2vw">New User?<a href="/signup" class="text-green-600 bg-green-600 text-white px-4 py-1 rounded font-medium mr-2 mb-2">Sign-up now</a></p><br>
+        <p class="py-2 font-semibold text-gray-600", style="font-size:2vw">Existing User? <a href="/login" class="text-green-600 bg-green-600 text-white px-4 py-1 rounded font-medium mr-2 mb-2">Sign-in</a></p>
       </div>
     </div>
   </body>
