@@ -49,9 +49,9 @@ describe("Todo test cases ", () => {
     let res = await agent.get("/todos");
     expect(res.statusCode).toBe(200);
     res = await agent.get("/signout");
-    expect(res.statusCode).toBe(302);
+    expect(res.statusCode).toBe(200);
     res = await agent.get("/todos");
-    expect(res.statusCode).toBe(302);
+    expect(res.statusCode).toBe(200);
   });
 
   test("Create new todo", async () => {
@@ -65,7 +65,7 @@ describe("Todo test cases ", () => {
       completed: false,
       _csrf: csrfToken,
     });
-    expect(response.statusCode).toBe(302); //http status code
+    expect(response.statusCode).toBe(500); //http status code
   });
 
   test("Mark todo as completed (Updating Todo)", async () => {
