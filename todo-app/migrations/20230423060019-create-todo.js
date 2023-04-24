@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable(
-      "Todos",
+      "todos",
       {
         id: {
           allowNull: false,
@@ -36,11 +36,11 @@ module.exports = {
         },
       },
       {
-        tableName: "todos ",
+        tableName: "todos",
       }
     );
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Todos");
+    await queryInterface.dropTable("todos");
   },
 };
