@@ -137,8 +137,8 @@ app.post("/users", async (request, response) => {
 
   try {
     const _user = await user.create({
-      firstname: request.body.firstname,
-      lastname: request.body.lastname,
+      firstName: request.body.firstName,
+      lastName: request.body.lastName,
       email: request.body.email,
       password: hashedPwd,
     });
