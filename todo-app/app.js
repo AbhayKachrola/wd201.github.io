@@ -118,8 +118,8 @@ app.get("/signup", (request, response) => {
     csrfToken: request.csrfToken(),
   });
 });
-// eslint-disable-next-line no-unused-vars
-app.post("/users", async (request, response,_done) => {
+
+app.post("/users", async (request, response) => {
   if (request.body.email.length == 0) {
     request.flash("error", "Email can not be empty!");
     return response.redirect("/signup");
