@@ -1,16 +1,19 @@
-'use strict';
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+"use strict";
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.addColumn("todos", "userId", {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.addColumn("Todos", "userId", {
       type: Sequelize.DataTypes.INTEGER,
     });
-    await queryInterface.addConstraint("todos", {
+
+    await queryInterface.addConstraint("Todos", {
       fields: ["userId"],
       type: "foreign key",
       references: {
-        table: "users",
+        table: "Users",
         field: "id",
       },
     });
@@ -22,14 +25,13 @@ module.exports = {
      */
   },
 
-  // eslint-disable-next-line no-unused-vars
-  async down (queryInterface, _Sequelize) {
-    await queryInterface.removeColumn("todos", "userId");
+  async down(queryInterface, Sequelize) {
+    await queryInterface.removeColumn("Todos", "userId");
     /**
      * Add reverting commands here.
      *
      * Example:
      * await queryInterface.dropTable('users');
      */
-  }
+  },
 };

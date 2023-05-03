@@ -1,28 +1,40 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 "use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("users", {
+    await queryInterface.createTable("Users", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      firstname: {
+      firstName: {
         type: Sequelize.STRING,
         allowNull: false,
+        validate: {
+            notNull: true,
+        },
       },
-      lastname: {
+      lastName: {
         type: Sequelize.STRING,
       },
       email: {
         type: Sequelize.STRING,
         allowNull: false,
+        validate: {
+            notNull: true,
+        },
         unique: true,
       },
       password: {
         type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+            notNull: true,
+        },
       },
       createdAt: {
         allowNull: false,
@@ -35,6 +47,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("users");
+    await queryInterface.dropTable("Users");
   },
 };
