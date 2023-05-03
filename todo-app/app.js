@@ -118,7 +118,8 @@ app.get("/signup", (request, response) => {
     csrfToken: request.csrfToken(),
   });
 });
-app.post("/users", async (request, response) => {
+// eslint-disable-next-line no-unused-vars
+app.post("/users", async (request, response,_done) => {
   if (request.body.email.length == 0) {
     request.flash("error", "Email can not be empty!");
     return response.redirect("/signup");
@@ -136,13 +137,13 @@ app.post("/users", async (request, response) => {
   console.log(hashedPwd);
 
   try {
-    const _user = await user.create({
+    const _users = await user.create({
       firstName: request.body.firstName,
       lastName: request.body.lastName,
       email: request.body.email,
       password: hashedPwd,
     });
-    request.login(_user, (err) => {
+    request.login(_users, (err) => {
       if (err) {
         console.log(err);
       }
