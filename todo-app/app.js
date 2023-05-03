@@ -119,6 +119,13 @@ app.get("/signup", (request, response) => {
   });
 });
 
+app.get("/users", (request, response) => {
+  response.render("users", {
+    title: "users",
+    csrfToken: request.csrfToken(),
+  });
+});
+
 app.post("/users", async (request, response) => {
   if (request.body.email.length == 0) {
     request.flash("error", "Email can not be empty!");
@@ -137,13 +144,13 @@ app.post("/users", async (request, response) => {
   console.log(hashedPwd);
 
   try {
-    const _users = await user.create({
+    const _user = await user.create({
       firstName: request.body.firstName,
       lastName: request.body.lastName,
       email: request.body.email,
       password: hashedPwd,
     });
-    request.login(_users, (err) => {
+    request.login(_user, (err) => {
       if (err) {
         console.log(err);
       }
