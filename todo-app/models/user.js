@@ -1,28 +1,35 @@
-'use strict';
-
-const {
-  Model
-} = require('sequelize');
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class user extends Model {
+  class User extends Model {
+    static addUser({ firstName, lastName, email, password }) {
+      return this.create({ firstName, lastName, email, password });
+    }
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      
+      User.hasMany(models.Todo, {
+        foreignKey: "userId",
+      });
       // define association here
     }
   }
-  user.init({
-    firstname: DataTypes.STRING,
-    lastname: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'user',
-  });
-  return user;
+  User.init(
+    {
+      firstname: DataTypes.STRING,
+      lastname: DataTypes.STRING,
+      email: DataTypes.STRING,
+      password: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "user",
+    }
+  );
+  return User;
 };
